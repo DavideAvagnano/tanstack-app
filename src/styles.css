@@ -142,3 +142,10 @@ code {
   margin-inline: auto;
   padding: 1rem;
 }
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}

@@ -27,6 +27,7 @@ import { cn } from '@/lib/utils'
 import { eq } from 'drizzle-orm'
 import { todos } from '@/db/schema'
 import { ActionButton } from '@/components/ui/action-button'
+import { LocalCountButton } from '@/components/local-count-button'
 
 const serverLoader = createServerFn({ method: 'GET' }).handler(() => {
   return db.query.todos.findMany()
@@ -66,6 +67,15 @@ function App() {
       </div>
 
       <TodoListTable todos={todos} />
+
+      <div className="mt-40 border-t border-dashed border-muted-foreground p-4 flex flex-col items-center justify-center gap-2 max-w-md mx-auto">
+        <div className="font-semibold">Test for Client Only Function</div>
+        <LocalCountButton />
+        <div className="text-sm text-muted-foreground text-center">
+          This is not executed on the server but only on the client. It uses
+          local Storage, that is not available server side.
+        </div>
+      </div>
     </div>
   )
 }
